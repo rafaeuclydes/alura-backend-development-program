@@ -2,7 +2,7 @@
 // Crie um array com 5 nomes. Use for para imprimir cada nome no console, um por linha.
 const nomes = ["Hanna", "Grampola", "Pumba", "Amora", "Paçoca"];
 
-for (i = 0; i < nomes.length; i++){
+for (let i = 0; i < nomes.length; i++){
 	console.log(nomes[i]);
 };
 
@@ -28,7 +28,7 @@ const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 let soma = 0;
 
-for (i = 0; i < num.length; i++){
+for (let i = 0; i < num.length; i++){
 	soma += num[i];  
 }
 
@@ -39,11 +39,11 @@ console.log(`Soma doa números: ${soma}`);
 const notas = [4, 9, 8, 3];
 
 let somatoria = 0;
-for (i = 0; i < notas.length; i++) {
+for (let i = 0; i < notas.length; i++) {
 	let media = somatoria += notas[i]/notas.length;
 };
 
-if (somatoria[i] >= 7) {
+if (somatoria >= 7) {
 	console.log('Média do aluno foi igual ou acima de 7: Aprovado');
 } else {
 	console.log(`Média do aluno foi abaixo de 7: Reprovado`);
@@ -78,12 +78,22 @@ const maiorIdade = idades.filter ((idades) => idades >= 18)
 const compras = [100, 50, 56, 13.9, 2];
 
 let total = 0;
-for (i = 0; i < compras.length; i++){
+for (let i = 0; i < compras.length; i++){
 	total += compras[i];
 }
 const desc = total * 0.80;
 console.log(`Valor total da compra: ${total}`);
 console.log(`Valor com 20% de desconto: ${desc}`);
+
+// Usando o reduce
+let totalReduce = compras.reduce((acumulador, item) => {
+	return acumulador + item;
+}, 0);
+
+console.log(totalReduce);
+let descReduce = totalReduce * 0.80;
+console.log(descReduce);
+
 
 // 10. Lista de tarefas
 // Crie um array com 5 tarefas (strings). Use filter para mostrar apenas as tarefas que ainda não foram marcadas como concluídas (use uma convenção como "[x]" para concluídas).
