@@ -94,4 +94,82 @@ do {
     dias++;
 } while (dias <= totalDias);
 
+console.log(`Total economizado: ${economia}`);
+
+
+// Temporizador de aquecimento
+// Você está programando o temporizador de uma esteira aquecida para secagem de produtos. O sistema precisa manter a esteira aquecida por pelo menos 5 segundos, mesmo que a temperatura ideal já tenha sido atingida.
+
+// O painel deve exibir, segundo a segundo:
+
+// “Aquecendo... segundo X” a cada ciclo;
+// A mensagem "Temperatura ideal atingida." exatamente no segundo em que essa condição for alcançada;
+// E ao final, o total de segundos que o sistema permaneceu ligado.
+// Crie um programa que simule esse funcionamento do temporizador de aquecimento, garantindo que ele continue funcionando até atingir pelo menos 5 segundos.
+const tempoMinimo = 5;
+const temperaturaIdealAlcancada = 3;
+
+let segundos = 0;
+
+do {
+    segundos++;
+    console.log(`Aquecendo... segundo ${segundos}`);
+    
+    if(segundos === temperaturaIdealAlcancada) {
+        console.log("Temperatura ideal atingida.")
+    } 
+} while (segundos < tempoMinimo)
+
+console.log(`Tempo total de aquecimento: ${segundos} segundos`)
+
+
+// Registro de caixas processadas
+// Você recebeu a tarefa de automatizar o painel de uma linha de empacotamento em um centro de distribuição. A cada ciclo, uma nova caixa é processada. A linha só pode processar no máximo 5 caixas válidas por vez. Mas, algumas caixas com número de identificação negativo precisam ser ignoradas, pois estão danificadas.
+
+// Crie um programa que simule o processamento das caixas, exibindo as válidas e ignorando as danificadas. O programa deve parar o processamento assim que 5 caixas válidas forem processadas.
+const caixas = [5, 45, -9, -18,  13, 4, 5];
+let processadas = 0;
+
+for(let contador = 0; contador < caixas.length; contador++) {
+    let valor = caixas[contador];
+    
+    if(valor < 0){
+        console.log("Caixa danificada, ignorada.");
+        continue;
+    }
+
+    console.log(`Caixas processada: ${valor}`);
+    processadas++;
+
+    if (processadas === 5) {
+        console.log("Limite de caixas processadas atingido!");
+        break
+    }
+}
+
+
+// Validação de login
+// Você está desenvolvendo o sistema de login de um app interno da empresa. O sistema precisa permitir que o usuário tente digitar sua senha corretamente até 3 vezes. Se digitar certo, exibe uma mensagem de acesso permitido. Se errar 3 vezes, bloqueia o acesso.
+
+// Seu desafio é escolher o laço de repetição mais adequado para resolver este problema.
+const tentativas = ["12345", "admin", "senha"];
+const senhaCorreta = "senha";
+
+let i = 0;
+let acessoLiberado = false;
+
+while(i < tentativas.length && i < 3) {
+    if(tentativas[i] === senhaCorreta) {
+        console.log("Acesso permitido!");
+        acessoLiberado = true;
+        break;
+    } else {
+        console.log(`Tentativa ${i + 1} inválida`);
+    }
+    i++
+}
+
+if(!acessoLiberado) {
+    console.log("Acesso bloqueado. Número máximo de tentativas atingido.");
+}
 console.log(`Total economizado: ${economia}`)
