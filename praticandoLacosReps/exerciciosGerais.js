@@ -172,3 +172,4 @@ while(i < tentativas.length && i < 3) {
 if(!acessoLiberado) {
     console.log("Acesso bloqueado. Número máximo de tentativas atingido.");
 }
+console.log(`Total economizado: ${economia}`)
