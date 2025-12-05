@@ -106,3 +106,97 @@ function mensagemPersonalizada(nome, tipo) {
 }
 
 processarPedido("Rafael", "novo", mensagemPersonalizada);
+
+
+// Mensagem com atraso
+// Imagine que você está desenvolvendo uma interface de atendimento online.Quando o usuário envia uma pergunta, o sistema precisa simular que está "pensando" ou "processando a resposta", e só depois exibir a resposta final.
+
+// Sua tarefa é criar uma função chamada responderUsuario, que receba dois parâmetros:
+
+    // o nome do usuário, e
+    // uma função de callback que será executada após 3 segundos.
+function responderUsuario(nome, callback) {
+    console.log("Processando sua pergunta...");
+    setTimeout(() => {
+        callback(nome);
+    }, 3000);
+}
+
+function mostrarResposta(nome) {
+    console.log(`Olá, ${nome}! Aqui está a resposta para sua dúvida.`);
+}
+
+responderUsuario("Rafa", mostrarResposta)
+
+
+// Avaliando a pontuação de um usuário
+// Imagine que você está desenvolvendo um sistema de avaliação para um jogo educativo.Ao final de cada fase, o jogador acumula uma pontuação total, e o sistema precisa avaliar se ele:
+
+    // Foi aprovado, se a pontuação for igual ou maior que 70
+    // Precisa de reforço, se a pontuação estiver entre 50 e 69
+    // Foi reprovado, se a pontuação for menor que 50
+// Sua tarefa é criar uma função chamada avaliarDesempenho, que receba dois parâmetros:
+
+    // a pontuação final do jogador
+    // uma função de callback que será usada para exibir uma mensagem personalizada com base no resultado da avaliação.
+function avaliarDesempenho(pontuacao, callback) {
+    if(pontuacao >= 70) {
+        console.log(`Pontuação: ${pontuacao}.`);
+    } else if(pontuacao < 69) {
+        console.log(`Pontuação: ${pontuacao}.`);
+    } else {
+        console.log(`Pontuação: ${pontuacao}.`);
+    }
+    callback(pontuacao)
+}
+
+function gerarMensagem(pontuacao) {
+     if(pontuacao >= 70) {
+        console.log("Parabéns você foi aprovado!");
+    } else if(pontuacao < 69 && pontuacao >= 50) {
+        console.log("Precisa de reforço");
+    } else {
+        console.log("Reprovado!");
+    }
+}
+
+avaliarDesempenho(20, gerarMensagem);
+
+// Solução Alura/gabarito
+function avaliarDesempenho(pontuacao, callback) {
+    let status = "";
+ 
+    if (pontuacao >= 70) {
+        status = "aprovado";
+    } else if (pontuacao >= 50) {
+        status = "reforco";
+    } else {
+        status = "reprovado";
+    }
+ 
+    callback(pontuacao, status);
+}
+ 
+function gerarMensagem(pontuacao, status) {
+    console.log(`Pontuação: ${pontuacao}`);
+ 
+    if (status === "aprovado") {
+        console.log("Parabéns! Você foi aprovado!");
+    } else if (status === "reforco") {
+        console.log("Atenção! Você precisa de reforço.");
+    } else {
+        console.log("Infelizmente, você foi reprovado. Tente novamente.");
+    }
+}
+ 
+avaliarDesempenho(82, gerarMensagem);
+
+
+// Classificador de consumo elétrico
+// Você está desenvolvendo um sistema para ajudar pessoas a entenderem melhor o consumo de energia elétrica de seus aparelhos eletrônicos. O sistema deve calcular o consumo mensal estimado com base no uso diário, classificar o consumo (baixo, moderado ou alto) e exibir uma mensagem clara para o usuário.
+
+// Sua missão é criar três funções separadas, com responsabilidades bem definidas:
+
+    // calcularConsumo(potencia, horasPorDia): Retorna o consumo mensal em kWh, com base na fórmula: consumo = (potencia × horasPorDia × 30) / 1000
+    // classificarConsumo(consumo): Retorna a classificação com base na tabela:
+    // exibirResumo(nomeAparelho, consumo, classificacao): Exibe uma mensagem como:"Geladeira tem consumo de 180 kWh/mês e é classificada como Consumo moderado."
